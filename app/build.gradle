@@ -9,6 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id "me.champeau.jmh" version "0.6.6"
 }
 
 repositories {
@@ -27,4 +28,14 @@ dependencies {
 application {
     // Define the main class for the application.
     mainClass = 'ru.clevertec.listBenchmark.App'
+}
+jmh {
+    warmupIterations = 2
+    iterations = 5
+    warmup = '1s'
+    batchSize = 1
+    timeOnIteration = '1s'
+    fork = 1
+    benchmarkMode = ['avgt', 'ss']
+    timeUnit = 'ns'
 }
